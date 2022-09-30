@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
-import './App.css'
+import { useDispatch, useSelector } from 'react-redux';
+// import './App.css'
+import './sass/App.scss';
+import { getAtmosphereConditions } from './thunks';
 
 export const App = () => {
 
@@ -8,6 +11,9 @@ export const App = () => {
   const [idDetalles, setIdDetalles] = useState(0)
   const fecha = new Date()
   const API = 'https://api.datos.gob.mx/v1/condiciones-atmosfericas'
+
+  const dispatch = useDispatch()
+  //const [] = useSelector(state => state.atmosphere)
 
   useEffect(() => {
     const getData = async() =>{
@@ -21,6 +27,11 @@ export const App = () => {
     getData()
   
   }, [])
+
+  useEffect(() => {
+    dispatch( getAtmosphereConditions())
+  }, [])
+  
 
 
   
@@ -79,7 +90,7 @@ export const App = () => {
               <td>{dato.state}</td>
               <td>{dato.probabilityofprecip}</td>
               <td>{dato.relativehumidity}</td>
-              <td>{dato.lastreporttime}</td>
+              <td>{Date(dato.lastreporttime)}</td>
               <td>{(dato.probabilityofprecip > 60 || dato.relativehumidity > 50) ? 'Lluvia' : 'Sin lluvia' }</td>
             </tr>
           ): '')

@@ -1,17 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const templateSlice = createSlice({
-    name: 'template',
+export const atmosphereSlice = createSlice({
+    name: 'condicionesAtmosfericas',
     initialState: {
-        counter: 10
+      page: 0,
+      atmosphere: [],
+      isLoading: false
     },
     reducers: {
-        increment: (state, /* action */ ) => {
-            state.counter += 1;
-        },
+      startLoading: (state, /* action */ ) => {
+        state.isLoading = true;
+      },
+      setAtmosphereConditions: (state, action) =>{
+        state.isLoading = false;
+        console.log(action)
+      }
     }
 });
 
 
 // Action creators are generated for each case reducer function
-export const { increment } = templateSlice.actions;
+export const { startLoading, setAtmosphereConditions } = atmosphereSlice.actions;
