@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { TableId } from './components/TableId';
 // import './App.css'
 import './sass/App.scss';
 import { getAtmosphereConditions } from './thunks';
@@ -13,7 +14,7 @@ export const App = () => {
   const API = 'https://api.datos.gob.mx/v1/condiciones-atmosfericas'
 
   const dispatch = useDispatch()
-  //const [] = useSelector(state => state.atmosphere)
+  const {page} = useSelector(state => state.atmosphere)
 
   useEffect(() => {
     const getData = async() =>{
@@ -59,86 +60,15 @@ export const App = () => {
     setIdDetalles(index)
   }
 
+  // const handlePage = () =>{
+  //   dispatch( getAtmosphereConditions(page))
+  // }
+
   return (
     <div className="App">
       <h1 className='border'> Inicio de prueba</h1>
-      <table>
-        <tbody >
-          <tr >
-          <th>Id</th>
-         
-          <th>city Id</th>
-         
-          <th>Name</th>
-         
-          <th>state</th>
-         
-          <th>probability of precip</th>
-         
-          <th>relative humedity</th>
-         
-          <th>Last Report</th>
-         
-          <th>Lluvia</th>
-          </tr>
-
-          { datos.map((dato, index) => (index < indexAPI) ? (
-            <tr key={index}>
-              <td><a href='#detalles' onClick={() => handleDataDetails(index)}>{dato._id}</a></td>
-              <td>{dato.cityid}</td>
-              <td>{dato.name}</td>
-              <td>{dato.state}</td>
-              <td>{dato.probabilityofprecip}</td>
-              <td>{dato.relativehumidity}</td>
-              <td>{Date(dato.lastreporttime)}</td>
-              <td>{(dato.probabilityofprecip > 60 || dato.relativehumidity > 50) ? 'Lluvia' : 'Sin lluvia' }</td>
-            </tr>
-          ): '')
-
-          }
-          
-        </tbody>
-      </table>
-      {
-        indexAPI > 99 ? <h2>Solo 100 registros</h2> : ''
-      }
-      {/* <div>
-        {
-          datos.map((dato, index) => index < 10 ? (
-            <div>
-              {dato._id} {index}
-            </div>
-          ): '')
-        }
-      </div> */}
-      <button onClick={handleIndexAPI}>Siguientes 10</button>
-
-      <br/>
-
-      <div id='detalles'>
-        <h1>Detalles</h1>
-        <table>
-          <tbody>
-            <tr>
-
-            {
-              datos.map((dato, index) => index < 1 ?(
-                  Object.keys(dato).map( key => (<th>{key}</th>))
-              ) : '')
-            } 
-            </tr>
-            <tr>
-              {
-                datos.map( (dato, index) => index == idDetalles ? (
-                  Object.values(dato).map( detalle => (
-                    <td>{detalle}</td>
-                  ))
-                ) : '')
-              }
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <button onClick={() => dispatch( getAtmosphereConditions(page+1))}>Next Page</button>
+      <TableId />
     </div>
   )
 }

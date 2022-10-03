@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const atmosphereSlice = createSlice({
     name: 'condicionesAtmosfericas',
     initialState: {
-      page: 0,
+      page: 1,
       atmosphere: [],
       isLoading: false
     },
@@ -13,7 +13,9 @@ export const atmosphereSlice = createSlice({
       },
       setAtmosphereConditions: (state, action) =>{
         state.isLoading = false;
-        console.log(action)
+        state.atmosphere = action.payload.results
+        state.page = action.payload.page
+        console.log('slice', action.payload.results)
       }
     }
 });
