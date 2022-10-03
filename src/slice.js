@@ -5,7 +5,8 @@ export const atmosphereSlice = createSlice({
     initialState: {
       page: 1,
       atmosphere: [],
-      isLoading: false
+      isLoading: false,
+      idDetails: ''
     },
     reducers: {
       startLoading: (state, /* action */ ) => {
@@ -15,11 +16,14 @@ export const atmosphereSlice = createSlice({
         state.isLoading = false;
         state.atmosphere = action.payload.results
         state.page = action.payload.page
-        console.log('slice', action.payload.results)
+      },
+      setIdDetails: (state, action) =>{
+        state.isLoading = false
+        state.idDetails = action.payload
       }
     }
 });
 
 
 // Action creators are generated for each case reducer function
-export const { startLoading, setAtmosphereConditions } = atmosphereSlice.actions;
+export const { startLoading, setAtmosphereConditions, setIdDetails } = atmosphereSlice.actions;
