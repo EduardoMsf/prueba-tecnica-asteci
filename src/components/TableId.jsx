@@ -22,26 +22,26 @@ export const TableId = () => {
       <table>
         <tbody >
           <tr >
-          <th>Id</th>
+          <th>ID</th>
          
-          <th>city Id</th>
+          <th>CIUDAD ID</th>
          
-          <th>Name</th>
+          <th>NOMBRE</th>
          
-          <th>state</th>
+          <th>ESTADO</th>
          
-          <th>probability of precip</th>
+          <th>PROBILIDAD DE PRECIPITACIÓN</th>
          
-          <th>relative humedity</th>
+          <th>HUMEDAD RELATIVA</th>
          
-          <th>Last Report</th>
+          <th>ÚLTIMO INFORME</th>
          
-          <th>Lluvia</th>
+          <th>LLUVIA</th>
           </tr>
 
           { limit < 99 ? atmosphere.slice(limit,limit+9).map((dato, index) => (
             <tr key={index}>
-              <td><a href='#detalles' onClick={() => handleDataDetails(index)}>{dato._id}</a></td>
+              <td>{dato._id}</td>
               <td>{dato.cityid}</td>
               <td>{dato.name}</td>
               <td>{dato.state}</td>
@@ -55,8 +55,10 @@ export const TableId = () => {
         
         </tbody>
       </table>
-      <button onClick={handleNextTen}>Next 10</button>
-      <h3>{limit+10} de 100</h3>
+      <div className="table-id_buttons">
+        <h3 className="margin1">{limit+10} de 100</h3>
+        <button className="margin1" onClick={handleNextTen}>Next 10</button>
+      </div>
     </div>
   )
 }

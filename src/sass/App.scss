@@ -5,6 +5,29 @@
     text-align: center;
   }
   
-  .border{
-    border-bottom: 1px solid black;
-  }
+.border{
+  border-bottom: 2px solid black;
+}
+.margin1{
+  margin: 1rem;
+}
+
+table{
+  border-collapse: collapse;
+}
+
+tr:nth-child(1){
+  color: rgb(38,127,85);
+  font-size: 1.3rem;
+  border-bottom: 2px solid black;
+}
+
+tr:hover{
+  background-color: #4f4f4f;
+}
+
+.table-id_buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
