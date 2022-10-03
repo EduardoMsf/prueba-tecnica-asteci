@@ -7,6 +7,3 @@ export const store = configureStore({
     atmosphere: atmosphereSlice.reducer
   },
 })
-
-// auth: authSlice.reducer,
-//journal: journalSlice.reducer
