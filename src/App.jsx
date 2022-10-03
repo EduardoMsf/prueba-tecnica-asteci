@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { TableDetail } from './components/TableDetail';
 import { TableId } from './components/TableId';
 import './sass/App.scss';
@@ -15,11 +16,12 @@ export const App = () => {
   }, [])
 
   return (
-    <div className="App">
-      <TableId />
-      <TableDetail />
-      <button onClick={() => dispatch( getAtmosphereConditions(page+1))}>Next Page</button>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<TableId/>}/>
+        <Route path='/detail/:_id' element={<TableDetail/>}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

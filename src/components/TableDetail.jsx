@@ -1,27 +1,27 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router"
 import { getIdDetails } from "../thunks"
 
 export const TableDetail = () => {
   const { page, isLoading, atmosphere } = useSelector(state => state.atmosphere)
-  const dispatch = useDispatch()
-  const ID = '5952983359954a0adbf7ab09'
-  const detailId = atmosphere.find( id => id._id == ID)
+  const { _id } = useParams()
+  const detailId = atmosphere.find( id => id._id == _id)
   const detailMapped = detailId ? Object.values(detailId) : ''
   //dispatch( getIdDetails())
-  
-  console.log(detailMapped)
   return (
     <>
       <div>
+        <div>
+          <h3>ID: {detailMapped[0]}</h3>
+          <h3>NOMBRE: {detailMapped[6]}</h3>
+        </div>
         <table>
           <tbody >
             <tr >
-              <th>ID</th>
-             
               <th>CIUDAD ID</th>
              
-              <th>VALID DATE UTC</th>
+              <th>FECHA UTC</th>
              
               <th>DIRECCIÓN DEL VIENTO</th>
              
@@ -30,7 +30,6 @@ export const TableDetail = () => {
               <th>HUMEDAD RELATIVA</th>
             </tr>
             <tr>
-              <td>{detailMapped[0]}</td>
               <td>{detailMapped[1]}</td>
               <td>{Date(detailMapped[2])}</td>
               <td>{detailMapped[3]}</td>
@@ -42,8 +41,6 @@ export const TableDetail = () => {
         <table>
           <tbody >
             <tr >
-              <th>NOMBRE</th>
-             
               <th>FECHA DE REGISTRO</th>
              
               <th>LONGITUD</th>
@@ -55,7 +52,6 @@ export const TableDetail = () => {
               <th>DESCRIPCIÓN DEL CIELO</th>
             </tr>
             <tr>
-              <td>{detailMapped[6]}</td>
               <td>{Date(detailMapped[7])}</td>
               <td>{detailMapped[8]}</td>
               <td>{detailMapped[9]}</td>
@@ -86,6 +82,7 @@ export const TableDetail = () => {
             </tr>
           </tbody >
         </table>
+        <button onClick={() => history.go(-1)}>Atras</button>
       </div>
     </>
   )
