@@ -41,7 +41,7 @@ export const TableId = () => {
 
           { limit < 99 ? atmosphere.slice(limit,limit+9).map((dato, index) => (
             <tr key={index}>
-              <td><a href='#detalles' onClick={() => handleDataDetails(index)}>{dato._id}</a></td>
+              <td>{dato._id}</td>
               <td>{dato.cityid}</td>
               <td>{dato.name}</td>
               <td>{dato.state}</td>
