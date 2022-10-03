@@ -1,6 +1,6 @@
-import { setAtmosphereConditions, startLoading } from "./slice"
+import { setAtmosphereConditions, setIdDetails, startLoading } from "./slice"
 
-export const getAtmosphereConditions= ( page = 1) => {
+export const getAtmosphereConditions = ( page = 1) => {
     return async( dispatch, getState ) => {
       //llamada a la api setear el estado en redux-toolkit
       dispatch( startLoading())
@@ -9,3 +9,10 @@ export const getAtmosphereConditions= ( page = 1) => {
       dispatch( setAtmosphereConditions({results, page}))
     }
   }
+
+export const getIdDetails = ( id = '') => {
+  return async(dispatch, getState) =>{
+    dispatch( startLoading())
+    //console.log('thunks', getState().atmosphere)
+  }
+}

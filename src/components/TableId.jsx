@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+import { getAtmosphereConditions } from "../thunks"
 
 
 export const TableId = () => {
-
+  
+  const dispatch = useDispatch()
   const { page, isLoading, atmosphere } = useSelector(state => state.atmosphere)
   const [ limit, setLimit] = useState(0)
   console.log(limit)
@@ -41,7 +44,7 @@ export const TableId = () => {
 
           { limit < 99 ? atmosphere.slice(limit,limit+9).map((dato, index) => (
             <tr key={index}>
-              <td>{dato._id}</td>
+              <td> <Link to={`/detail/${dato._id}`}>{dato._id}</Link></td>
               <td>{dato.cityid}</td>
               <td>{dato.name}</td>
               <td>{dato.state}</td>
@@ -59,6 +62,7 @@ export const TableId = () => {
         <h3 className="margin1">{limit+10} de 100</h3>
         <button className="margin1" onClick={handleNextTen}>Next 10</button>
       </div>
+      <button onClick={() => dispatch( getAtmosphereConditions(page+1))}>Next Page</button>
     </div>
   )
 }
