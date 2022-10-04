@@ -12,11 +12,11 @@ export const TableDetail = () => {
   return (
     <>
       <div>
-        <div>
+        <div className="table-details_title">
           <h3>ID: {detailMapped[0]}</h3>
           <h3>NOMBRE: {detailMapped[6]}</h3>
         </div>
-        <table>
+        <table className="table-details">
           <tbody >
             <tr >
               <th>CIUDAD ID</th>
@@ -38,7 +38,7 @@ export const TableDetail = () => {
             </tr>
           </tbody >
         </table>
-        <table>
+        <table className="table-details">
           <tbody >
             <tr >
               <th>FECHA DE REGISTRO</th>
@@ -60,7 +60,7 @@ export const TableDetail = () => {
             </tr>
           </tbody >
         </table>
-        <table>
+        <table className="table-details">
           <tbody >
             <tr >
               <th>ESTADO ABREV</th>
