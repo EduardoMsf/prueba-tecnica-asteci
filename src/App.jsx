@@ -1,15 +1,14 @@
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { TableDetail } from './components/TableDetail';
 import { TableId } from './components/TableId';
 import './sass/App.scss';
-import { getAtmosphereConditions, getIdDetails } from './thunks';
+import { getAtmosphereConditions } from './thunks';
 
 export const App = () => {
 
   const dispatch = useDispatch()
-  const {page} = useSelector(state => state.atmosphere)
 
   useEffect(() => {
     dispatch( getAtmosphereConditions())

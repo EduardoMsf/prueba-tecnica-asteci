@@ -5,10 +5,15 @@ import { getIdDetails } from "../thunks"
 
 export const TableDetail = () => {
   const { page, isLoading, atmosphere } = useSelector(state => state.atmosphere)
+  const dispatch = useDispatch()
   const { _id } = useParams()
   const detailId = atmosphere.find( id => id._id == _id)
   const detailMapped = detailId ? Object.values(detailId) : ''
   //dispatch( getIdDetails())
+  useEffect(() => {
+    dispatch( getIdDetails(_id))
+  }, [])
+  
   return (
     <>
       <div>

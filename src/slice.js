@@ -6,7 +6,7 @@ export const atmosphereSlice = createSlice({
       page: 1,
       atmosphere: [],
       isLoading: false,
-      idDetails: ''
+      idDetails: {}
     },
     reducers: {
       startLoading: (state, /* action */ ) => {

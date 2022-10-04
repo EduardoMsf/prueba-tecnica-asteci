@@ -13,6 +13,11 @@ export const getAtmosphereConditions = ( page = 1) => {
 export const getIdDetails = ( id = '') => {
   return async(dispatch, getState) =>{
     dispatch( startLoading())
-    //console.log('thunks', getState().atmosphere)
+    const {atmosphere} = await getState().atmosphere
+    console.log('thunks', atmosphere)
+    console.log('thunks', id)
+    const resp = atmosphere.find( atmos => atmos._id == id)
+    console.log('thunks', resp)
+    dispatch( setIdDetails(resp))
   }
 }
