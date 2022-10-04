@@ -21,7 +21,7 @@ export const TableId = () => {
   }
   return (
     <div>
-      <h1>Inicio TableID Component</h1>
+      <h1>Condiciones Atmosféricas</h1>
       <table>
         <tbody >
           <tr >
