@@ -9,7 +9,6 @@ export const TableId = () => {
   const dispatch = useDispatch()
   const { page, isLoading, atmosphere } = useSelector(state => state.atmosphere)
   const [ limit, setLimit] = useState(0)
-  console.log(limit)
 
   useEffect(() => {
     setLimit(0)

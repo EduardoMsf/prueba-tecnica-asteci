@@ -14,10 +14,7 @@ export const getIdDetails = ( id = '') => {
   return async(dispatch, getState) =>{
     dispatch( startLoading())
     const {atmosphere} = await getState().atmosphere
-    console.log('thunks', atmosphere)
-    console.log('thunks', id)
     const resp = atmosphere.find( atmos => atmos._id == id)
-    console.log('thunks', resp)
     dispatch( setIdDetails(resp))
   }
 }
